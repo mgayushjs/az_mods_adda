@@ -1,6 +1,4 @@
-async function loadApps() {
-  const response = await fetch("apps.json");
-  const apps = await response.json();
+function loadApps() {
   const appList = document.getElementById("app-list");
 
   function displayApps(filteredApps) {
