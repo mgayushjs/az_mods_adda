@@ -1,4 +1,4 @@
-[
+const apps = [
   {
     "name": "Netflix MOD",
     "version": "v10.0",
@@ -486,5 +486,5 @@
     "rating": "4.2",
     "link": "https://yourlink.com/flixfox",
     "image": "assets/flixfox.jpg"
-  }
-]
+  },
+];
