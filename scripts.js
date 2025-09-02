@@ -1,28 +1,35 @@
 async function loadApps() {
-  const response = await fetch('apps.json');
+  const response = await fetch("apps.json");
   const apps = await response.json();
+  const appList = document.getElementById("app-list");
 
-  // Recommended apps
-  const recommendSection = document.querySelector('#recommend .app-list');
-  apps.filter(app => app.category === "Recommend")
-      .forEach(app => renderApp(app, recommendSection));
+  function displayApps(filteredApps) {
+    appList.innerHTML = "";
+    filteredApps.forEach(app => {
+      const card = document.createElement("div");
+      card.className = "app-card";
 
-  // Latest apps
-  const latestSection = document.querySelector('#latest .app-list');
-  apps.filter(app => app.category === "Latest")
-      .forEach(app => renderApp(app, latestSection));
-}
+      card.innerHTML = `
+        <img src="${app.image}" alt="${app.name}">
+        <h3>${app.name}</h3>
+        <p><strong>Version:</strong> ${app.version}</p>
+        <p><strong>Category:</strong> ${app.category}</p>
+        <p><strong>Rating:</strong> ⭐ ${app.rating}</p>
+        <a href="${app.link}" target="_blank">Download</a>
+      `;
+      appList.appendChild(card);
+    });
+  }
 
-function renderApp(app, container) {
-  const card = document.createElement('div');
-  card.className = 'app-card';
-  card.innerHTML = `
-    <img src="${app.image}" alt="${app.name}">
-    <h3>${app.name}</h3>
-    <p>⭐ ${app.rating} | ${app.version}</p>
-    <a href="${app.link}" target="_blank">Download</a>
-  `;
-  container.appendChild(card);
+  // Initial load
+  displayApps(apps);
+
+  // Search filter
+  document.getElementById("search").addEventListener("input", (e) => {
+    const keyword = e.target.value.toLowerCase();
+    const filtered = apps.filter(app => app.name.toLowerCase().includes(keyword));
+    displayApps(filtered);
+  });
 }
 
 loadApps();
