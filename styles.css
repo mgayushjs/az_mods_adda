@@ -1,0 +1,9 @@
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
+header { background: #222; color: #fff; padding: 20px; text-align: center; }
+header input { padding: 10px; width: 60%; margin-top: 10px; border-radius: 5px; border: none; }
+section { padding: 20px; }
+.app-list { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+.app-card { width: 200px; border: 1px solid #ddd; padding: 10px; border-radius: 10px; text-align: center; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+.app-card:hover { transform: scale(1.05); }
+.app-card img { max-width: 100%; border-radius: 8px; }
+footer { background: #222; color: #fff; text-align: center; padding: 15px; margin-top: 20px; }
